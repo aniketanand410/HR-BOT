@@ -26,7 +26,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Create `backend/.env` from `/workspace/env.example` (or export variables). **Important**: point `GOOGLE_APPLICATION_CREDENTIALS` at the service-account JSON file.
+Put your variables in **`HR-BOT/.env`** (repo root) **or** `backend/.env`. If both exist, `backend/.env` overrides the same keys. Copy from `env.example` in the repo root. **Important**: set `GOOGLE_APPLICATION_CREDENTIALS` to the absolute path of your service-account JSON file.
 
 Run API:
 

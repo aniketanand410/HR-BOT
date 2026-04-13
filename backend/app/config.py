@@ -1,10 +1,26 @@
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+# backend/app/config.py -> repo root is parents[2] (HR-BOT/), backend/ is parents[1]
+_BACKEND_DIR = Path(__file__).resolve().parents[1]
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+def _env_files() -> tuple[str, ...] | None:
+    """Load repo-root .env (e.g. HR-BOT/.env), then backend/.env so local overrides work."""
+    candidates = (_REPO_ROOT / ".env", _BACKEND_DIR / ".env")
+    existing = tuple(str(p) for p in candidates if p.is_file())
+    return existing or None
+
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=_env_files(),
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
 
     openai_api_key: str
     pinecone_api_key: str
