@@ -1,0 +1,175 @@
+:root {
+  color-scheme: light;
+  --bg: #0f1419;
+  --panel: #1a222d;
+  --border: #2a3544;
+  --text: #e8eef5;
+  --muted: #9aa7b8;
+  --accent: #4f8cff;
+  --accent-dim: #3a6fd6;
+  --warn: #f0b429;
+  --low: #e85d4c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(1200px 600px at 20% -10%, #1f2a3d, var(--bg));
+  color: var(--text);
+}
+
+#root {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.chat {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.msg {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.msg.user {
+  align-self: flex-end;
+  background: #243044;
+  border: 1px solid var(--border);
+  max-width: 85%;
+}
+
+.msg.bot {
+  align-self: stretch;
+  background: #121922;
+  border: 1px solid var(--border);
+}
+
+.msg-meta {
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+
+.badge.high {
+  color: #7dffb2;
+  border-color: #2f5c45;
+  background: #13261c;
+}
+
+.badge.medium {
+  color: #ffe08a;
+  border-color: #5c4a2f;
+  background: #261f13;
+}
+
+.badge.low {
+  color: #ffb4a8;
+  border-color: #5c2f2f;
+  background: #261313;
+}
+
+.citations {
+  margin-top: 0.5rem;
+}
+
+.citations strong {
+  color: var(--text);
+}
+
+.citations ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.citations li {
+  margin: 0.2rem 0;
+  word-break: break-word;
+}
+
+.composer {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.composer textarea {
+  flex: 1;
+  resize: vertical;
+  min-height: 52px;
+  max-height: 200px;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0c1016;
+  color: var(--text);
+  font: inherit;
+}
+
+.composer textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.composer button {
+  padding: 0 1.1rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(180deg, var(--accent), var(--accent-dim));
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.composer button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.err {
+  color: #ffb4a8;
+  font-size: 0.9rem;
+}
